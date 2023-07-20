@@ -1,0 +1,58 @@
+<nav class="py-6 px-6 flex justify-between bg-teal-500">
+    <a href="/" class="text-white">5SQUARE HOMES</a>
+
+    <div class="space-x-4 flex items-center"> <!-- Added flex and items-center to align items horizontally -->
+        <a href="{% url 'about' %}" class="text-white">About</a>
+        {% if request.user.is_authenticated %}
+            {% if active_team %}
+            <a href="{% url 'team:detail' active_team.id %}" class="text-white">{{ active_team.name }}</a>
+            {% else %}
+                <a href="#" class="text-white">No Active Team</a>
+            {% endif %}
+
+            <!--<li class="nav-item dropdown notification-section relative"> --> <!-- Added relative class for positioning -->
+                <!--<a href="#" class="notification dropdown-toggle relative" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="true">
+                    <span><i class='fa fa-bell'></i></span>
+                    <span class="badge rounded-full bg-red-500 text-white text-xs absolute top-0 -right-2">{{ notifications|length }}</span>
+                </a>
+                <ul class="dropdown-menu bg-white rounded-lg shadow-md p-2 absolute right-0 mt-2 hidden"> --> <!-- Adjusted styling with Tailwind CSS classes -->
+                    <!--{% for i in notifications %}
+                    <li class="dropdown-item">{{i.message}}</li>
+                    <hr class="dropdown-divider">
+                    {% endfor %}
+                </ul>
+            </li> -->
+
+            <div class="relative">
+                <ul class="flex items-center">
+                  <li>
+                    <button id="bellButton" class="relative bg-teal-700 rounded-xl py-3 px-5 text-white">
+                      <i class="fas fa-bell"></i>
+                      <span id="notificationCounter" class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs px-2">2</span>
+                    </button>
+                    <ul id="notificationDropdown" class="hidden bg-white rounded-lg shadow-md absolute top-10 right-0 mt-2 py-2 w-48">
+                        {% for i in notifications %}
+                        <li class="dropdown-item">{{i.message}}</li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              
+              
+              
+            <a href="{% url 'dashboard:index' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Dashboard</a>
+            <a href="{% url 'leads:list' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Leads</a>
+            <a href="{% url 'clients:list' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Clients</a>
+            <a href="{% url 'userprofile:myaccount' %}" class="py-4 px-6 bg-teal-800 rounded-xl text-white">My account</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Log in</a>
+            <a href="{% url 'userprofile:signup' %}" class="py-4 px-6 bg-teal-300 rounded-xl text-white">Sign up</a>
+        {% endif %}
+    </div>
+</nav>
+
+
+  

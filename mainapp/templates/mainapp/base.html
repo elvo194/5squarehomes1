@@ -1,0 +1,63 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="{% static 'main.min.css' %}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        
+        <style>
+            /* Add CSS transitions for the animation */
+            #notificationDropdown {
+              transition: opacity 0.2s, transform 0.2s;
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            #notificationDropdown.active {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          </style>
+          
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        {% include 'partials/nav.html' %}
+
+        <!--{% if messages %}
+            <div class="py-6 px-6">
+                {% for message in messages %}
+                    <div class="py-4 px-4 bg-teal-300 text-white rounded-xl">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}-->
+
+        {% block content %}
+        {% endblock %}
+
+        {% include 'partials/footer.html' %}
+        <script>
+            const bellButton = document.getElementById('bellButton');
+            const notificationDropdown = document.getElementById('notificationDropdown');
+            let isDropdownOpen = false;
+          
+            bellButton.addEventListener('click', () => {
+              isDropdownOpen = !isDropdownOpen;
+              if (isDropdownOpen) {
+                notificationDropdown.classList.add('active');
+              } else {
+                notificationDropdown.classList.remove('active');
+              }
+            });
+          </script>
+          
+    </body>
+</html>
