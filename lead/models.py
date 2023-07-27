@@ -15,15 +15,17 @@ class Lead(models.Model):
     )
 
     NEW = 'new'
-    CONTACTED = 'contacted'
-    WON = 'won'
-    LOST = 'lost'
+    WAITING = 'waiting'
+    FUTURE = 'future'
+    PROSPECT = 'prospect'
+    MEETING = 'meeting'
 
     CHOICES_STATUS = (
         (NEW, 'New'),
-        (CONTACTED, 'Contacted'),
-        (WON, 'Won'),
-        (LOST, 'Lost'),
+        (WAITING, 'Waiting'),
+        (FUTURE, 'Future'),
+        (PROSPECT, 'Prospect'),
+        (MEETING, 'Meeting'),
     )
 
     team = models.ForeignKey(Team, related_name='leads', on_delete=models.CASCADE)
