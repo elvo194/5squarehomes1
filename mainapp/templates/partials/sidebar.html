@@ -1,0 +1,61 @@
+{% if request.user.is_authenticated %}
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">5 SQUARE HOMES</span>
+        </a>
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="{% url 'dashboard:index' %}">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'leads:list' %}">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Leads</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'clients:list' %}">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">Clients</span>
+                </a>
+            </li>
+            
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="{% url 'userprofile:myaccount' %}" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">My Account</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    {% else %}
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">5 SQUARE HOMES</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% url 'login' %}" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Login</span>
+                </a>
+            </li>
+            <!-- REMOVE THIS IN PRODUTION-->
+            <li>
+                <a href="{% url 'userprofile:signup' %}" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Signup</span>
+                </a>
+            </li>
+        </ul>
+        
+    </section>
+    
+{% endif %}

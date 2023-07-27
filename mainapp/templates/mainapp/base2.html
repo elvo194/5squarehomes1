@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'main.min.css' %}">
+        
+	<style>
+		/* Add CSS transitions for the animation */
+		#notificationDropdown {
+		  transition: opacity 0.2s, transform 0.2s;
+		  opacity: 0;
+		  transform: translateY(-10px);
+		}
+		#notificationDropdown.active {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+	  </style>
+
+	<title>5 SQUARE HOMES AdminHUB</title>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  {% include 'partials/sidebar.html' %}
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		{% include 'partials/nav1.html' %}
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			{% block content %}
+			{% endblock %}
+		</main>
+	<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+        {% include 'partials/footer.html' %}
+        <script>
+            const bellButton = document.getElementById('bellButton');
+            const notificationDropdown = document.getElementById('notificationDropdown');
+            let isDropdownOpen = false;
+          
+            bellButton.addEventListener('click', () => {
+              isDropdownOpen = !isDropdownOpen;
+              if (isDropdownOpen) {
+                notificationDropdown.classList.add('active');
+              } else {
+                notificationDropdown.classList.remove('active');
+              }
+            });
+          </script>
+		  <script src="{% static 'script.js' %}"></script>
+          
+    </body>
+</html>
+
+		
